@@ -28,15 +28,6 @@ It simulates a real-world SIEM system used in enterprise cybersecurity environme
 
 ---
 
-## 📸 Dashboard Preview
-
-> Add your screenshots inside a `/screenshots` folder
-
-![Dashboard](./screenshots/dashboard.png)
-![Alerts](./screenshots/alerts.png)
-
----
-
 ## 🎬 Demo Flow
 
 1. Upload a `.log` file
