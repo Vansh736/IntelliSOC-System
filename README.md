@@ -1,38 +1,81 @@
-# IntelliSOC – Log-Based Cyber Attack Detection System (Mini SIEM)
+# 🚀 IntelliSOC – AI-Powered Cyber Threat Detection System (Mini SIEM)
 
-IntelliSOC is a full-stack Security Information and Event Management (SIEM) application designed to ingest system logs, detect cyber threats, correlate events, and display actionable insights through an intuitive, modern dashboard. 
-
-## 🚀 Features
-
-- **File Ingestion:** Upload `.log` files directly via the dashboard for rapid analysis.
-- **Parsing Engine:** Converts raw log files into structured JSON utilizing optimized regex patterns.
-- **Threat Detection Engine:**
-  - Identifies **Brute Force Attacks** (e.g., numerous failed logins from a single IP within a short time window).
-  - Detects **Suspicious Activity** (e.g., multiple unique users logging in from the same IP indicating account sharing or distributed attacks).
-- **Correlation Engine:** Correlates sequences like multiple failed logins followed by a success to detect potential **Account Compromise**.
-- **Time-Based Logic & Aggregation:** Maintains strict time windows to prioritize recent events and aggregates duplicate alerts by (IP + type) with a frequency count instead of database clutter.
-- **Enrichment & Context:** Evaluates risk scores out of 100, maps threats to MITRE ATT&CK tactics, and provides clear, human-readable explanations of the attack patterns.
-- **Session-Based Management:** Groups logs and alerts by upload session to ensure forensic boundaries are cleanly maintained.
-
-## 🛠️ Tech Stack
-
-### Frontend
-- **Framework:** React 19 w/ TypeScript & Vite
-- **Styling:** Tailwind CSS v4
-- **Charts:** Recharts
-- **Icons:** Lucide React
-- **HTTP Client:** Axios
-
-### Backend
-- **Runtime:** Node.js
-- **Framework:** Express.js + TypeScript
-- **File Uploads:** Multer
-- **Database ORM:** Prisma
-- **Database:** PostgreSQL
+IntelliSOC is a full-stack Security Information and Event Management (SIEM) system that analyzes system logs, detects cyber threats, correlates events, and presents actionable insights through a modern, interactive dashboard.
 
 ---
 
-## 🏗️ Architecture & Internal Workflow
+## ⚠️ Problem
+
+Modern systems generate massive volumes of logs, but analyzing them manually is:
+
+- ⏳ Time-consuming  
+- ❌ Error-prone  
+- 🚫 Inefficient for real-time threat detection  
+
+Security teams need automated systems to detect threats quickly and accurately.
+
+---
+
+## 💡 Solution
+
+IntelliSOC automates log analysis by:
+
+- 🔍 Detecting cyber attacks instantly  
+- 🔗 Correlating multiple events to uncover real threats  
+- 🧠 Providing clear, explainable insights  
+
+It simulates a real-world SIEM system used in enterprise cybersecurity.
+
+---
+
+## 📸 Dashboard Preview
+
+> Add your screenshots in a `/screenshots` folder
+
+![Dashboard](./screenshots/dashboard.png)  
+![Alerts](./screenshots/alerts.png)
+
+---
+
+## 🎬 Demo Flow
+
+1. Upload a `.log` file  
+2. System parses and structures logs  
+3. Detects threats like brute force & account compromise  
+4. Correlates events and assigns risk scores  
+5. Displays results in an interactive dashboard  
+6. Export results as CSV for further analysis  
+
+---
+
+## 💡 Key Differentiators
+
+- 🔍 **Explainable Alerts** – clear reasoning behind every detection  
+- ⏱️ **Time-Based Behavioral Analysis**  
+- 📊 **Session-Based Log Isolation**  
+- ⚡ **Lightweight SIEM Simulation** (fast & deployable)  
+
+---
+
+## 🚀 Features
+
+- **File Ingestion:** Upload `.log` files directly  
+- **Parsing Engine:** Converts raw logs → structured JSON  
+- **Threat Detection Engine:**
+  - Brute Force Attack detection  
+  - Suspicious multi-user IP activity  
+- **Correlation Engine:** Detects account compromise patterns  
+- **Time-Based Logic & Aggregation:** Focuses on recent events and avoids duplicate alerts  
+- **Enrichment Layer:**
+  - Risk scoring (0–100)  
+  - MITRE ATT&CK mapping  
+  - Human-readable explanations  
+- **Session Management:** Isolates each upload for clean analysis  
+- **Export Reports:** Download results as CSV  
+
+---
+
+## 🏗️ Architecture
 
 ```mermaid
 graph TD;
@@ -43,99 +86,73 @@ graph TD;
     E --> F[Enrichment Layer]
     F -->|Risk Scoring & MITRE| G[(PostgreSQL DB)]
     G -->|Alerts & Analytics API| H[Frontend Dashboard]
-```
-
-1. **Upload & Parse:** A user uploads a `.log` file on the frontend. The backend accepts it via Multer, reads it line-by-line, and converts the raw text into structured JSON.
-2. **Detect:** The Detection Engine tracks IP behavior, specifically looking at failed logins within a rolling time window and unique user constraints.
-3. **Correlate & Enrich:** Events are correlated (e.g. failure followed by success). They are automatically mapped to a severity, risk score (0-100), and specific MITRE tactic.
-4. **Store:** All raw logs, parsed data, and resulting alerts are tied to a unique `session_id` and securely saved in the PostgreSQL database via Prisma ORM.
-5. **Display:** The frontend queries the aggregated alerts and overall analytics for the session, populating the interactive summary cards and the main Alerts Table.
-
----
-
-## 🚀 Getting Started & Deployment Guide
-
-Follow these instructions to run the application locally or deploy it to a server.
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) (v18+ recommended)
-- [PostgreSQL](https://www.postgresql.org/) installed and running locally or externally.
-
-### 1. Database Setup
-
-1. Create a PostgreSQL database (e.g., `intellisoc`).
-2. Navigate to the `backend` folder and configure the `.env` file for Prisma:
-   ```bash
-   cd backend
-   # Create a .env file based on standard Prisma definitions
-   echo "DATABASE_URL=postgresql://USER:PASSWORD@localhost:5432/intellisoc?schema=public" > .env
-   # Make sure to replace USER, PASSWORD, localhost, and intellisoc with your correct credentials
-   ```
-
-### 2. Backend Setup
-
-From the root of the project:
-```bash
+🛠️ Tech Stack
+Frontend
+React 19 + TypeScript + Vite
+Tailwind CSS
+Recharts
+Lucide React
+Backend
+Node.js + Express + TypeScript
+Multer (file upload)
+Prisma ORM
+Database
+PostgreSQL
+🚀 Getting Started
+Prerequisites
+Node.js (v18+)
+PostgreSQL
+1️⃣ Database Setup
+cd backend
+echo "DATABASE_URL=postgresql://USER:PASSWORD@localhost:5432/intellisoc" > .env
+2️⃣ Backend Setup
 cd backend
 npm install
-
-# Generate Prisma Client & Migrate Database to create tables
 npx prisma generate
 npx prisma migrate dev --name init
-
-# Start the development server
 npm run dev
-# The backend will typically run on http://localhost:5000 (check your configuration)
-```
-
-To run in production:
-```bash
-npm run build
-npm start
-# The backend will output to the /dist folder and use server.js
-```
-
-### 3. Frontend Setup
-
-From the root of the project:
-```bash
+3️⃣ Frontend Setup
 cd frontend
 npm install
-
-# Start the development server
 npm run dev
-# The frontend will typically run on http://localhost:5173
-```
+🌍 Real-World Impact
 
-To build for production:
-```bash
-npm run build
-# The compiled assets will be placed in the `/dist` folder. 
-# Serve this folder using an HTTP server like Nginx, Apache, or serve (npm).
-```
+IntelliSOC helps security teams:
+
+⚡ Detect attacks faster
+🧠 Understand threat patterns
+🛡️ Take immediate action
+
+It demonstrates how real-world SIEM tools operate in cybersecurity environments.
+
+🚀 Future Enhancements
+Real-time log streaming (WebSockets)
+AI/ML-based anomaly detection
+Integration with threat intelligence APIs
+Role-based authentication
+🤝 Contributing
+
+Contributions are welcome!
+
+Fork the repo
+Create a feature branch
+Commit your changes
+Push and open a PR
+📝 License
+
+This project is licensed under the MIT License.
+
 
 ---
 
-## 📂 Key Project Structure
+# 🚀 Next Step
 
-- `backend/src/`
-  - `server.ts` - Main Express entry point and routing logic
-  - `prisma/` - Database schema definitions
-- `frontend/src/`
-  - `components/` - Reusable React components (Dashboard, AlertsTable, etc.)
-  - `App.tsx` - Main Application logic
-  - `index.css` - Tailwind directives and global styles
+👉 Paste this into README.md  
+👉 Add screenshots (very important)
 
-## 🤝 Contributing
+Then send me your GitHub repo 👀  
+I’ll help you:
 
-Contributions are welcome!
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License.
+- 🔥 polish it further  
+- 🎤 prepare hackathon pitch  
+- 🏆 maximize winning chances
