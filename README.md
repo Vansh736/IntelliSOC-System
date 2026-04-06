@@ -1,7 +1,8 @@
 # 🚀 IntelliSOC – Smart Cyber Threat Detection System (Mini SIEM)
 
-IntelliSOC is a full-stack Security Information and Event Management (SIEM) system designed to analyze system logs, detect cyber threats, correlate events, and present actionable insights through a modern, interactive dashboard. This project was developed as a full-stack application by me, with cybersecurity domain support and contributions from my teammates Vansh Tiwari and Josh Yadav.
+IntelliSOC is a full-stack Security Information and Event Management (SIEM) system designed to monitor, analyze, and detect cyber threats in real-time. It processes system logs, correlates events, and provides actionable insights through an intuitive and interactive dashboard.
 
+The system focuses on identifying suspicious activities such as brute-force attacks, failed login attempts, and anomalous behavior patterns using rule-based and intelligent detection techniques.
 ---
 
 ## ⚠️ Problem
