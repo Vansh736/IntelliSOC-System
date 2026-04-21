@@ -2,8 +2,6 @@
 
 IntelliSOC is a full-stack Security Information and Event Management (SIEM) system developed as a collaborative project, focused on real-time cyber threat detection and log analysis.
 
-This project was led from a cybersecurity perspective by Vansh Tiwari and Josh Yadav, while Keshav Gupta contributed as a Full Stack Developer, building and integrating the application across frontend and backend systems.
-
 The system processes system logs, correlates events, and provides actionable insights through an intuitive and interactive dashboard. It is designed to detect suspicious activities such as brute-force attacks, repeated failed login attempts, and anomalous behavior patterns using rule-based and intelligent detection techniques.
 
 ## ⚠️ Problem
@@ -167,14 +165,11 @@ This project demonstrates how real-world SIEM tools operate in modern cybersecur
 
 ---
 
-👥 Team Contributions
-Vansh Tiwari
-Lead – Cybersecurity Analysis & Threat Detection
-Josh Yadav
-Cybersecurity Research & Detection Logic
-Keshav Gupta
-Full Stack Development (Frontend & Backend Integration)
+## 👥 Team Contributions
 
+- **Vansh Tiwari** — *Lead – Cybersecurity Analysis & Threat Detection*  
+- **Josh Yadav** — *Cybersecurity Research & Detection Logic*  
+- **Keshav Gupta** — *Full Stack Development (Frontend & Backend Integration)*  
 
 ---
 
