@@ -167,10 +167,13 @@ This project demonstrates how real-world SIEM tools operate in modern cybersecur
 
 ---
 
-👥 Team Contribution
-Vansh Tiwari – Cybersecurity Analysis & Threat Detection
-Josh Yadav – Cybersecurity Research & Detection Logic
-Keshav Gupta – Full Stack Development (Frontend + Backend Integration)
+👥 Team Contributions
+Vansh Tiwari
+Lead – Cybersecurity Analysis & Threat Detection
+Josh Yadav
+Cybersecurity Research & Detection Logic
+Keshav Gupta
+Full Stack Development (Frontend & Backend Integration)
 
 
 ---
